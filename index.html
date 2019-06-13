@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="hljs-dracula-theme.css">
+    <title>Timmy Tran's VetsInTech Web Development Final Project</title>
+</head>
+<body>
+  <div class="ui inverted segment blue" style="border-radius: 0em;">
+    <div class="ui inverted secondary menu top">
+      <a class="active item" data-tab="tab-home">
+          Home
+      </a>
+      <a class="item" data-tab="tab-cool-stuff">
+          AE Solutions
+      </a>
+    </div>
+
+    <div class="ui tab segment active" data-tab="tab-home">
+      <h2>Free PC games for military members and veterans, courtesy of GamesToGrunts.com</h2>
+        <div id="games">
+          <div id="card-list" class="ui cards">
+          </div>
+        </div>
+    </div>
+
+    <div class="ui tab segment" data-tab="tab-cool-stuff">
+            <h2>Solutions for Accumulator Exercise 1 to 27</h2><br/>
+            <p>1. <strong>doubleNumbers</strong><br/>
+            Write function named doubleNumbers that will take an array of numbers and return an array with those numbers multiplied by 2<br/>
+            Example:<br/>
+            if you pass it [1,2,3] then it should return [2,4,6]</p>
+
+            <pre><code class="javascript">function doubleNumbers(arr) {
+  if (!arr) return [];
+  for (let i=0; i < arr.length; i++) {
+    arr[i] *= 2
+  }
+  return arr
+}</code></pre>
+            <p>let array = [1,2,3]<br/>
+            doubleNumbers(array)<br/><br/></p>
+
+            <p>2. <strong>multiplyNumbers</strong><br/>
+            Write function named multiplyNumbers that will take an array of numbers and return an array with those numbers multiplied by another value<br/>
+            Examples:<br/>
+            if you call multiplyNumbers([1,2,3], 0) you'd get [0,0,0]<br/>
+            if you call multiplyNumbers([1,2,3], 5) you'd get [5,10,15]</p>
+
+            <pre><code class="javascript">function multiplyNumbers(arr, num) {
+  if (!arr || !num) return 'Please specify input array and multiplier number'
+  for (let i=0; i < arr.length; i++) {
+  arr[i] *= num
+  }
+  return arr
+}</code></pre>
+            <p>let array = [1,2,3]<br/>
+            multiplyNumbers(array,20)<br/><br/></p>
+
+            <p>3. <strong>doubleLetters</strong><br/>
+            Write function named doubleLetters that will take a string and double every letter in the string<br/>
+            Example:<br/>
+            if you pass it "abc" then it should return "aabbcc"</P>
+                    
+            <pre><code class="javascript">function doubleLetters(inputString) {
+  if (!inputString) return ''
+  let stringResult = ''
+  for (let i=0; i < inputString.length; i++) {
+    stringResult += inputString[i] + inputString[i]
+}
+return stringResult
+}</code></pre>
+
+            <p>let str = 'ASDF';<br/>
+            doubleLetters(str)<br/><br/></p>
+
+            <p>4. <strong>interleave</strong><br/>
+            Write function named interleave that will take two arrays and interleaves them<br/>
+            Example:<br/>
+            if you pass it ["a", "b", "c"] and ["d", "e", "f"] then it should return ["a", "d", "b", "e", "c", "f"]<br/>
+            NOTE: you can assume each input will be the same length</p>
+            
+            <pre><code class="javascript">function interleave(arr1, arr2) {
+  if (!arr1 || !arr2) return []
+  let resultArray = []
+  for (let i=0; i < arr1.length; i++) {
+    resultArray.push(arr1[i], arr2[i])
+  }
+  return resultArray
+}</code></pre>
+
+            <p>let arrayA = ["a", "b", "c"]<br/>
+            let arrayB = ["d", "e", "f"]<br/>
+            interleave(arrayA, arrayB)<br/><br/></p>
+
+            <p>5. <strong>createRange</strong><br/>
+            Write function named createRange that will take a number and a default value and return an array of that many values<br/>
+            Example:<br/>
+            if you pass it 4 and "Hello" then it should return ["Hello", "Hello", "Hello", "Hello"]</p>
+            
+            <pre><code class="javascript">function createRange(num,msg) {
+  let resultArray = []
+  for (let i=0; i < num; i++) {
+    resultArray.push(msg)
+  }
+  return resultArray
+}</code></pre>
+
+            <p>createRange(10, "Welcome!")<br/><br/></p>
+
+            <p>6. <strong>flipArray</strong><br/>
+            Write function named flipArray that will take an array and return an object where the keys are the items and the values are the indices<br/>
+            If you pass it ["quick", "brown", "fox"] then it should return { "quick": 0, "brown": 1, "fox": 2 }</p>
+            
+            <pre><code class="javascript">function flipArray(arr) {
+  let resultObject = {}
+  for (let i=0; i < arr.length; i++) {
+  resultObject[arr[i]] = i
+  }
+  return resultObject
+}</code></pre>
+            
+            <p>flipArray(["quick", "brown", "fox"])</p>
+            
+            <p>Another solution is to use <strong><em>forEach</em></strong><br/>
+
+            <pre><code class="javascript">function flipArray(arr) {
+  let resultObject = {}
+  arr.forEach(function(element, index, array) {
+    resultObject[array[index]] = index
+  })
+  return resultObject
+}</code></pre>
+
+            <p>flipArray(["quick", "brown", "fox"])<br/><br/></p>
+
+            <p>7. <strong>arraysToObject</strong><br/>
+            Write function named arraysToObject that will take an array of 2-element arrays, and return an object of key/value pairs<br/>
+            Example:<br/>
+            If you pass it [[2014, "Horse"], [2015, "Sheep"]] then it should return { 2014: "Horse", 2015: "Sheep" }</p>
+            
+            <pre><code class="javascript">function arraysToObject(arr) {
+  let resultObject = {}
+  for (let i=0; i < arr.length; i++) {
+    resultObject[arr[i][0]] = arr[i][1]
+  }
+  return resultObject
+}</code></pre>
+            
+            <p>arraysToObject([[2014, "Horse"], [2015, "Sheep"]])<br/><br/></p>
+
+            <p>8. <strong>reverseString</strong><br/>
+            Write function named reverseString that will reverse a string without calling the built-in <strong><em>.split</em></strong> or <strong><em></em>.reverse</em></strong> methods<br/>
+            Example:<br/>
+            If you pass it "hello" then it should return "olleh"</p>
+            
+            <pre><code class="javascript">function reverseString(inputString) {
+  if (!inputString) return ''
+  let stringResult = ''
+  for (let i = inputString.length-1; i >= 0; i--) {
+    stringResult += inputString[i];
+  }
+  return stringResult  
+}</code></pre>
+
+            <p>reverseString("How Are You Doing?")<br/><br/></p>
+
+            <p>9. <strong>repeats</strong><br/>
+            Write a function named repeats that returns true if the first half of the string equals the last half, and false if not<br/>
+            Example:<br/>
+            If you pass it "haha" then it should return true because "ha" (the first half) equals "ha" (the second half)<br/>
+            If you pass it "yay" then it should return false because it's odd<br/>
+            If you pass it "heehaw" then it should return false because "hee" doesn't equal "haw"</p>
+
+            <pre><code class="javascript">function repeats(stringInput) {
+  if (stringInput.length % 2 > 0) return false // Odd string length won't repeat
+  if (!stringInput) return true // Return true for empty string
+  let firstHalf = ''
+  let lastHalf = ''
+  for (let i = 0; i < stringInput.length/2; i++) {
+    firstHalf += stringInput[i];
+  }
+  for (let j = stringInput.length/2; j < stringInput.length; j++) {
+    lastHalf += stringInput[j];
+  }
+  for (let k = 0; k < firstHalf.length; k++) {
+    if (firstHalf[k] !== lastHalf[k]) {
+      return false;
+    }
+  }
+  return true;
+}</code></pre>
+              
+            <p>repeats("hahahaha")<br/><br/></p>
+
+            <p>10. <strong>everyOther</strong><br/>
+            Write a function named everyOther that returns every other character in the string<br/>
+            Example:<br/>
+            If you pass it "abcdef" then it should return "ace" because those represent every other letter</p>
+              
+            <pre><code class="javascript">function everyOther(inputString) {
+  if (!inputString) return ''
+  let resultString = ''
+  for (let i=0; i < inputString.length; i+=2 ) {
+    resultString += inputString[i]
+  }
+  return resultString
+}</code></pre>
+              
+            <p>everyOther("ABCDEFGH")<br/><br/></p>
+
+            <p>11. <strong>allEqual</strong><br/>
+            Write a function named allEqual that returns true if every character in the string is the same<br/>
+            Example:<br/>
+            If you pass "aaa" it should return true<br/>
+            If you pass "aba" it should return false</p>
+            
+            <pre><code class="javascript">function allEqual(inputString) {
+  if (!inputString) return true
+  let resultString = ''
+  let repeatingChar = inputString[0]
+  for (let i=0; i < inputString.length; i++) {
+    if ( repeatingChar !== inputString[i] ) return false
+  }
+  return true
+}</code></pre>
+            
+            <p>allEqual("aaaaaaaa")<br/><br/></p>
+
+            <p>12. <strong>sumLetters</strong><br/>
+            Write a function named sumLetters that returns the sum of every character in the string<br/>
+            Example:<br/>
+            If you pass "45" it should return 9<br/>
+            If you pass "246" it should return 12</p>
+
+            <pre><code class="javascript">function sumLetters(inputString) {
+  if (!inputString) return 0
+  let sum = 0
+  for (let i=0; i < inputString.length; i++ ) {
+    sum += parseInt(inputString[i], 10) // 10 means decimal, base 10
+  }
+  return sum
+}</code></pre>
+              
+            <p>sumLetters("24689")<br/><br/></p>
+
+            <p>13. <strong>countVowels</strong><br/>
+            Write a function named countVowels that returns the number of vowels in a string, excluding "y"<br/>
+            Example:<br/>
+            If you pass "you" it should return 2</p>
+            
+            
+            <pre><code class="javascript">function countVowels(inputString) {
+  let vowels = ["a", "e", "i", "o", "u"]
+  let counter = 0
+  for (let i=0; i < inputString.length; i++) {
+    if ( vowels.includes( inputString[i].toLowerCase() ) ) {
+      counter++
+    }
+  }
+  return counter
+}</code></pre>
+            
+            <p>countVowels("abcdefg")<br/><br/></p>
+
+
+
+
+
+
+            <p>14. <strong>split</strong><br/>
+            Write a function named split that takes a string and returns an array of the letters<br/>
+            Example:<br/>
+            If you pass "you" it should return ["y", "o", "u"]<br/>
+            <strong>NOTE:</strong> do not use the builtin <strong><em>split</em></strong> method</p>
+            
+            
+            <pre><code class="javascript">function split(inputString) {
+  if (!inputString) return []
+  let resultArray = []
+  for (let i=0; i < inputString.length; i++) {
+    resultArray.push(inputString[i])
+  }
+  return resultArray;
+}</code></pre>
+            
+            <p>split("WELCOME!")<br/><br/></p>
+
+            <p>15. <strong>getCodePoints</strong><br/>
+            Write a function named getCodePoints that takes a string and returns an array of the codePoints of the letters<br/>
+            See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt" target="_blank">
+                    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt
+                </a><br/>
+            Example:<br/>
+            If you pass "Hello" it should return [ 72, 101, 108, 108, 111 ]<br/>
+            
+            <pre><code class="javascript">function getCodePoints(inputString) {
+  if (!inputString) return []
+  let resultArray = []
+  for (let i=0; i < inputString.length; i++) {
+    resultArray.push( inputString.codePointAt(i) )
+  }
+  return resultArray;
+}</code></pre>
+            
+            <p>getCodePoints("Hello")<br/><br/></p>
+
+            <p>16. <strong>letterMap</strong><br/>
+            Write a function named letterMap that takes a string and returns an object of the letters and their positions in the string<br/>
+            Example:<br/>
+            If you pass "Yo" it should return {Y: 0, o: 1}<br/>
+            If you pass "Hello" it should return {H: 0, e: 1, l: 3, o: 4}</p>
+            
+            <pre><code class="javascript">function letterMap(inputString) {
+  if (!inputString) return {}
+  let resultObject = {}
+  for (let i=0; i < inputString.length; i++) {
+    resultObject[inputString[i]] = i
+  }
+  return resultObject
+}</code></pre>
+            
+            <p>letterMap("Hello")<br/><br/></p>
+
+            <p>17. <strong>letterCount</strong><br/>
+            Write a function named letterCount that takes a string and returns an object with the letters and the number of their occurrences<br/>
+            Example:<br/>
+            If you pass "Yo" it should return {Y: 1, o: 1}<br/>
+            If you pass "Hello" it should return {"H": 1, "e": 1, "l": 2, "o": 1}</p>
+            
+            <pre><code class="javascript">function letterCount(inputString) {
+  if (!inputString) return {}
+  let resultObject = {}
+  for (let i=0; i < inputString.length; i++) {
+    if ( !resultObject[inputString[i]] )
+      resultObject[inputString[i]] = 1
+    else
+      resultObject[inputString[i]]++
+  }
+  return resultObject
+}</code></pre>
+            
+            <p>letterCount("Hello")</p>
+
+            <p>A shorter solution (3 lines less) is to use <strong>assignments with logical operator OR, which is ||</strong><br/>
+
+            <pre><code class="javascript">function letterCount(inputString) {
+  if (!inputString) return {}
+  let resultObject = {}
+  for (let i=0; i < inputString.length; i++) {
+    resultObject[inputString[i]] = resultObject[inputString[i]] + 1 || 1
+  }
+  return resultObject
+}</code></pre>
+
+            <p>letterCount("Hello")<br/><br/></p>
+
+            <p>18. <strong>threeOdds</strong><br/>
+            Write a function named threeOdds that takes 2 numbers and returns true if there are at least 3 odd numbers between those two numbers<br/>
+            Example:<br/>
+            If you pass 0,2 it should return false because the only number between 0 and 2 is 1<br/>
+            If you pass 0,6 it should return true because between 0 and six (the numbers 1,2,3,4,5) there are three odds - 1, 3 and 5<br/>
+            
+            <pre><code class="javascript">function threeOdds(num1, num2) {
+  if (!num1 && !num2) return false
+  let counter = 0
+  for (let i=num1 + 1; i < num2; i++) {
+    if (i % 2 === 1) {
+      counter++
+      if (counter === 3) return true
+    }
+  }
+  return false
+}</code></pre>
+            
+            <p>threeOdds(0,66)</p>
+            
+            <p>A simpler and shorter solution<br/>
+            
+            <pre><code class="javascript">function threeOdds(num1, num2) {
+  if (!num1 && !num2) return false
+  if (num2 - num1 >= 6) return true;
+  return false;
+}</code></pre>
+
+            <p>threeOdds(4,10)<br/><br/></p>
+
+            <p>19. <strong>createString</strong><br/>
+            Write a function named createString that takes a number and a letter and creates a string of that many letters<br/>
+            Example:<br/>
+            If you pass 3, "a" it should return "aaa"<br/>
+            If you pass 2, "b" it should return "bb"</p>
+            
+            <pre><code class="javascript">function createString(num, inputString) {
+  if ( (!num && !inputString) || (num <= 0) ) return ''
+  let resultString = inputString
+  for (let i=1; i < num; i++) {
+    resultString += inputString
+  }
+  return resultString
+}</code></pre>
+
+            <p>createString(10,"b")<br/><br/></p>
+
+            <p>20. <strong>factorial</strong><br/>
+            Write a function named factorial that takes a number and returns its factorial<br/>
+            Factorial of 4 means 4 * 3 * 2 * 1<br/>
+            Example:<br/>
+            If you pass 4 it should return 24 since that's 4 * 3 * 2 * 1<br/>
+            If you pass 5 it should return 120 since that's 5 * 4 * 3 * 2 * 1</p>
+            
+            <pre><code class="javascript">function factorial(num) {
+  if ( num < 0 ) return 0
+  if ( num === 0 ) return 1
+  let result = 1
+  for (let i=1; i <= num; i++) {
+    result *= i
+  }
+  return result
+}</code></pre>
+            
+            <p>factorial(8)<br/><br/></p>
+
+            <p>21. <strong>arrayOfNumbers</strong><br/>
+            Write a function named arrayOfNumbers that takes a number and returns an array of all the numbers between 1 and that number, inclusive<br/>
+            Example:<br/>
+            If you pass 1 it should return [1]<br/>
+            If you pass 3 it should return [1,2,3]</p>
+            
+            <pre><code class="javascript">function arrayOfNumbers(num) {
+  if (!num || num <= 0 ) return []
+  let resultArray = []
+  for (let i=1; i <= num; i++) {
+    resultArray.push(i)
+  }
+  return resultArray
+}</code></pre>
+            
+            <p>arrayOfNumbers(10)<br/><br/></p>
+
+            <p>22. <strong>evenOdd</strong><br/>
+            Write a function named evenOdd that takes two numbers and returns an object with the numbers and whether they are even or odd<br/>
+            Example:<br/>
+            If you pass 1,4 it should return {"1": "odd", "2": "even", "3": "odd", "4": "even"}</p>
+            
+            <pre><code class="javascript">function evenOdd(num1, num2) {
+  if (!num1 && !num2) return {}
+  let resultObject = {}
+  for (let i=num1; i <= num2; i++ ) {
+    if ( i % 2 === 1)
+      resultObject[i] = "odd"
+    else
+      resultObject[i] = "even"
+  }
+  return resultObject
+}</code></pre>
+            
+            <p>evenOdd(1,12)<br/><br/></p>
+
+            <p>23. <strong>growingKeys</strong><br/>
+            Write a function named growingKeys that takes a number and a string and creates that many number of new keys according to the following example. The values for all of the keys will just be true<br/>
+            Example:<br/>
+            If you pass 2,"d" it should return {"d": true, "dd": true}</p>
+
+            <pre><code class="javascript">function growingKeys(num, char) {
+  if (!num && !char) return {}
+  let resultObject = {}
+  let growingChars = char
+  for (let i=1; i <= num; i++) {
+    resultObject[growingChars] = true
+    growingChars += char
+  }
+  return resultObject
+}</code></pre>
+
+            <p>growingKeys(5, "a")</p>
+
+            <p>A faster and shorter solution but it is a little harder to understand</p>
+
+            <pre><code class="javascript">function growingKeys(num, char) {
+  if (!num && !char) return {}
+  let resultObject = {}
+  for (let i=0; i < num; i++) {
+    resultObject[char] = true
+    char += char[i]
+  }
+  return resultObject
+}</code></pre>
+            
+            <p>growingKeys(5, "a")<br/><br/></p>
+
+            <p>24. <strong>every</strong><br/>
+            Write a function named every that takes an array and a value and returns true if every element of the array equals the value<br/>
+            Example:<br/>
+            If you pass [1,1], 1 it should return true<br/>
+            If you pass [1,2], 1 it should return false</p>
+            
+            <pre><code class="javascript">function every(arr, num) {
+  if (!arr && !num) return false
+  for (let i=0; i < arr.length; i++) {
+    if ( arr[i] !== num) return false
+  }
+  return true
+}</code></pre>
+            
+            <p>every( [1, 1, 1, 1, 1, 1, 1], 1 )<br/><br/></p>
+
+            <p>25. <strong>some</strong><br/>
+            Write a function named some that takes an array and a value and returns true if at least one element of the array equals the value<br/>
+            Example:<br/>
+            If you pass [1,2], 1 it should return true<br/>
+            If you pass [3,2], 1 it should return false</p>
+            
+            <pre><code class="javascript">function some(arr, num) {
+  if (!arr && !num) return false
+  for (let i=0; i < arr.length; i++) {
+    if ( arr[i] === num) return true
+  }
+  return false
+}</code></pre>
+            
+            <p>some( [1, 2, 3, 4, 5, 6, 7], 1 )<br/><br/></p>
+
+            <p>26. <strong>toSentence</strong><br/>
+            Write a function named toSentence that takes an array and returns a string with the elements joined by commas, with a trailing 'and'<br/>
+            Example:<br/>
+            If you pass ["Sue", "Will"] it should return "Sue and Will"<br/>
+            If you pass ["Sue", "Will", "Rachel"] it should return "Sue, Will and Rachel"</p>
+            
+            <pre><code class="javascript">function toSentence(arr) {
+  if (!arr) return ''
+  let resultString = ''
+  for (let i=0; i < arr.length; i++) {
+    if (i === arr.length - 1) {
+      resultString = resultString.substring(0, resultString.length - 2);
+      resultString += " and " + arr[i]
+      return resultString
+    }
+    resultString += arr[i] + ", "
+  }
+  return resultString
+}</code></pre>
+            
+            <p>toSentence( ["Sue", "Will", "Rachel", "Jennifer", "Ashley"] )<br/><br/></p>
+
+            <p>27. <strong>acronym</strong><br/>
+            Write a function named acronym that takes an array and returns a string that is an acronym of the items in the array<br/>
+            Example:<br/>
+            If you pass ["Sue", "Will"] it should return "SW"<br/>
+            If you pass ["Java", Script", "Object", "Notation"] it should return "JSON"</p>
+            
+            <pre><code class="javascript">function acronym(arr) {
+  if (!arr) return ''
+  let resultString = ''
+  for (let i=0; i < arr.length; i++) {
+    resultString += arr[i][0]
+  }
+  return resultString
+}</code></pre>
+            
+            <p>acronym( ["Java", "Script", "Object", "Notation"] )<br/><br/></p>
+
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+  <script src="highlight.pack.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
